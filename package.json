@@ -5,6 +5,9 @@
   "repository": "https://github.com/JunilHwang/js-calculator",
   "author": "junilHwang <junil.h@kakao.com>",
   "license": "MIT",
+  "scripts": {
+    "test:e2e": "cypress open"
+  },
   "devDependencies": {
     "cypress": "^9.5.1",
     "eslint": "^8.10.0",

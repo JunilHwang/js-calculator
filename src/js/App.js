@@ -1,5 +1,5 @@
-import { Component } from "./core";
-import { Operation, StringCalculator } from "./domain";
+import { Component } from "./core/index.js";
+import { Operation, StringCalculator } from "./domain/index.js";
 
 export class App extends Component {
   calculator = StringCalculator.of();
