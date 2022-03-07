@@ -39,7 +39,7 @@ export class App extends Component {
 
     this.setState({
       inputNumber: false,
-      currentValue: this.calculator.execute(),
+      currentValue: Math.floor(this.calculator.execute()),
     });
 
     calculator.operation = value;
