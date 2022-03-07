@@ -1,31 +1,32 @@
-import { Operation } from "./Operation";
+import { Operation } from "./Operation.js";
 
 export class StringCalculator {
   #stack;
-  #lastOperation;
+  #operation;
 
   constructor() {
-    this.#stack = [0];
+    this.#stack = [];
   }
 
-  get stackTop() {
-    return this.#stack[this.#stack.length - 1];
+  static of() {
+    return new StringCalculator();
   }
 
   push(number) {
     this.#stack.push(number);
   }
 
-  addOperation(operation) {
-    if (this.#stack.length > 1) {
-      this.#calculate();
-    }
-    this.#lastOperation = operation;
+  set operation(operation) {
+    this.#operation = operation;
   }
 
-  #calculate() {
-    const y = this.#stack.pop();
-    const x = this.#stack.pop();
-    this.#stack.push(Operation.execute(this.#lastOperation, x, y));
+  execute() {
+    const [x, y] = this.#stack;
+    if (y === undefined) {
+      return x;
+    }
+    const result = Operation.execute(this.#operation, x, y);
+    this.#stack = [result];
+    return result;
   }
 }

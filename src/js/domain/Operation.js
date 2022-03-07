@@ -3,6 +3,7 @@ export class Operation {
   static SUBTRACT = new Operation("-", (x, y) => x - y);
   static MULTIPLY = new Operation("*", (x, y) => x * y);
   static DIVISION = new Operation("/", (x, y) => x / y);
+  static EQUALS = new Operation("=");
 
   operator;
   operation;
@@ -20,5 +21,9 @@ export class Operation {
 
   valueOf() {
     return this.operator;
+  }
+
+  toString() {
+    return this.valueOf();
   }
 }
