@@ -25,15 +25,16 @@ export class App extends Component {
   };
 
   nextCurrentValue(value) {
-    const { inputNumber } = this.state;
-    if (inputNumber) return Number(`${this.state.currentValue}${value}`);
+    const { inputNumber, currentValue } = this.state;
+    if (inputNumber) {
+      return Number(`${currentValue}${value}`.substring(0, 3));
+    }
     return value;
   }
 
   handleOperationClick = (event) => {
     const value = event.target.innerHTML.trim();
     const { calculator, state } = this;
-    const isEquals = value === Operation.EQUALS.valueOf();
     calculator.push(state.currentValue);
 
     this.setState({
@@ -41,7 +42,6 @@ export class App extends Component {
       currentValue: this.calculator.execute(),
     });
 
-    if (isEquals) return;
     calculator.operation = value;
   };
 

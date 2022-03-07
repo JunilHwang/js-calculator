@@ -5,11 +5,16 @@ export class StringCalculator {
   #operation;
 
   constructor() {
-    this.#stack = [];
+    this.reset();
   }
 
   static of() {
     return new StringCalculator();
+  }
+
+  reset() {
+    this.#stack = [];
+    this.#operation = undefined;
   }
 
   push(number) {
@@ -17,6 +22,9 @@ export class StringCalculator {
   }
 
   set operation(operation) {
+    if (operation === Operation.EQUALS.valueOf()) {
+      return this.reset();
+    }
     this.#operation = operation;
   }
 
